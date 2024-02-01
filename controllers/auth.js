@@ -21,8 +21,13 @@ export const register = async (req,res,next)=>{
         })
 
         await newUser.save()
-        res.status(200).send("User has been created!")
-
+        //res.status(200).send("User has been created!")
+        res.status(200).json({
+            status: true,
+            data: "User has been created!",
+            message:  "User has been created"
+          });
+          return;
     }catch(error){
         next(error)
     }
@@ -40,8 +45,12 @@ export const login = async (req,res,next)=>{
         const  {password,isAdmin,...otherDetails} =user._doc
         res.cookie("access_token",token,{
             httpOnly:true,
-        }).status(200).json({...otherDetails})
-
+        }).status(200).json({
+            status: true,
+            data: {...otherDetails},
+            message:  "User has been created"
+          });
+          return;
     }catch(error){
         console.log(error)
 
