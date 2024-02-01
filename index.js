@@ -10,6 +10,7 @@ import cors from 'cors'
 
 const app = express()
 dotenv.config()
+const secret = process.env.JWT
 
 const connect = async()=>{
     try{
@@ -45,3 +46,4 @@ app.listen(8800,()=>{
     connect()
     console.log("Server connected")
 })
+export default secret

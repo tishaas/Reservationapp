@@ -2,8 +2,7 @@ import  User from "../models/User.js"
 import bcrypt from 'bcryptjs'
 import jwt from "jsonwebtoken"
 import { createError } from "../utils/error.js";
-import dotenv from 'dotenv'
-dotenv.config()
+import secret from "../index.js";
 
 export const register = async (req,res,next)=>{
     try{
@@ -11,7 +10,7 @@ export const register = async (req,res,next)=>{
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password,salt);
         
-        const token = jwt.sign({ email }, process.env.JWT, { expiresIn: 3600 });
+        const token = jwt.sign({ email },secret, { expiresIn: 3600 });
         //console.log("Token",token)
 
         const newUser = new User({
