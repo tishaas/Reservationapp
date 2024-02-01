@@ -1,6 +1,10 @@
 import  User from "../models/User.js"
 import bcrypt from 'bcryptjs'
 import jwt from "jsonwebtoken"
+import { createError } from "../utils/error.js";
+import dotenv from 'dotenv'
+dotenv.config()
+
 export const register = async (req,res,next)=>{
     try{
         const {email} = req.body
@@ -40,6 +44,8 @@ export const login = async (req,res,next)=>{
         }).status(200).json({...otherDetails})
 
     }catch(error){
-        next(error)
+        console.log(error)
+
+        //next(error)
     }
 }
