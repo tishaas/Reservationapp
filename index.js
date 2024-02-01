@@ -19,7 +19,7 @@ const connect = async()=>{
         throw error
     }
 }
-
+//mongodb+srv://tisha:tisha**@cluster0.ufixmyn.mongodb.net/hres
 mongoose.connection.on("disconnected",()=>{
     console.log("mongoDB disconnected!")
 })
@@ -31,7 +31,6 @@ app.use("/api/auth",authRoute)
 app.use("/api/hotels",hotelsRoute)
 app.use("/api/rooms",roomsRoute)
 app.use("/api/users",usersRoute)
-
 
 app.use((error,req,res,next)=>{
     const errorStatus = error.status ||500
