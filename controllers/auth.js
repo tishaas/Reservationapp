@@ -14,8 +14,9 @@ export const register = async (req,res,next)=>{
         //console.log("Token",token)
 
         const newUser = new User({
-            username:req.body.username,
-            email:req.body.email,
+            //username:req.body.username,
+            //email:req.body.email,
+           ...req.body,
             password:hash,
             Token:token
         })
@@ -47,10 +48,11 @@ export const login = async (req,res,next)=>{
             httpOnly:true,
         }).status(200).json({
             status: true,
-            data: {...otherDetails},
+            data: {deatils:{...otherDetails},isAdmin},
             message:  "User has been created"
           });
           return;
+          
     }catch(error){
         console.log(error)
 
