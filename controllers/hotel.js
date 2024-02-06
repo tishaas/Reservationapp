@@ -31,9 +31,9 @@ export const deleteHotel =async (req,res,next)=>{
 };
 //qurey =?featured=true gt-greater than lt-less than
 export const getHotels =async (req,res,next)=>{
-    const {min,max,...others}=req.query
+    // const {min,max,...others}=req.query
     try{
-        const hotels =await Hotel.find({...others,cheapestPrice:{$gt:min |1,$lt:max ||999}}).limit(req.query.limit)
+        const hotels =await Hotel.find({cheapestPrice:{$gt:req.query.min ||1,$lt: req.query.max ||999}}).limit(req.query.limit|| 10)
         res.status(200).json(hotels)
     }catch(error){
         next(error)
