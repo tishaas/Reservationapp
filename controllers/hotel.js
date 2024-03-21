@@ -23,7 +23,7 @@ export const updateHotel =async (req,res,next)=>{
 
 export const deleteHotel =async (req,res,next)=>{
     try{
-        await Hotel.findOneAndDelete(req.params.id,{$set:req.body})
+        await Hotel.findByIdAndDelete(req.params.id,{$set:req.body})
         res.status(200).json("Hotel has been deleted!!")
     }catch(error){
         res.status(500).json(error)
