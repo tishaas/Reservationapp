@@ -16,15 +16,15 @@ router.get("/checkuser/:id",verifyUser,(req,res,next)=>{
     res.send("Hello admin,you are logged in and you can delete all accounts!")
 })*/
 //update
-router.put('/:id',verifyUser,updateUser)
+router.put('/:id',updateUser)
 
 //delete
-router.delete('/:id',verifyUser,deleteUser)
+router.delete('/:id',deleteUser)
 
 //get
-router.get('/:id',verifyUser,getUser)
+router.get('/:id',getUser)
 
 //getall
-router.get('/',verifyAdmin,getUsers)
+router.get('/',getUsers)
 
 export default router
