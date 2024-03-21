@@ -47,7 +47,7 @@ export const deleteRoom =async (req,res,next)=>{
     try{
         await Room.findOneAndDelete(req.params.id,{$set:req.body})
         try{
-         await Room.findByIdAndUpdate(hotelId ,
+         await Hotel.findByIdAndUpdate(hotelId ,
           {$pull:{rooms:req.params.id}
          })
       }catch(err){   
@@ -62,7 +62,7 @@ export const deleteRoom =async (req,res,next)=>{
 
 export const getRooms =async (req,res,next)=>{
     try{
-        const rooms =await  Room.find()
+        const rooms =await Room.find()
         res.status(200).json(rooms)
     }catch(error){
         next(error)
