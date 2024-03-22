@@ -5,14 +5,14 @@ import { createRoom,updateRoom,
 import {verifyAdmin} from  "../utils/verifyToken.js"
 const router = express.Router()
 
-router.post('/:hotelid',verifyAdmin,createRoom)
+router.post('/:hotelid',createRoom)
 
 //update
-router.put('/:id',verifyAdmin,updateRoom)
+router.put('/:id',updateRoom)
 router.put('/availability/:id',updateRoomAvailability)
 
 //delete
-router.delete('/:id/:hotelid',verifyAdmin,deleteRoom)
+router.delete('/:id/:hotelid',deleteRoom)
 
 //get
 router.get('/:id',getRoom)
